@@ -54,6 +54,16 @@ body {
 #lista {
   display: none;
 }
+
+#botonMusica {
+  padding: 10px;
+  margin: 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: pink;
+  cursor: pointer;
+}
 </style>
 </head>
 
@@ -61,12 +71,23 @@ body {
 
 <div id="inicioPantalla">
   <h1>💖 Tengo algo para ti 💖</h1>
-  <button onclick="empezar()">Toca aquí (pon sonido) 🎶💖</button>
+  <button onclick="empezar()">Toca para empezar 💖</button>
 </div>
+
+<!-- 🎵 MÚSICA (oculta) -->
+<iframe id="musica"
+style="display:none"
+width="0"
+height="0"
+allow="autoplay">
+</iframe>
 
 <div id="contenido">
 
 <h1>Hola… esto es para ti 💖</h1>
+
+<!-- 🎶 BOTÓN DE MÚSICA -->
+<button id="botonMusica" onclick="activarMusica()">🎶 Activar música</button>
 
 <div class="seccion">
 <h2>Inicio</h2>
@@ -101,14 +122,25 @@ body {
 
 <script>
 
+let videoID = "8obld3JrBNM";
+
+/* inicio */
 function empezar() {
   document.getElementById("inicioPantalla").style.display = "none";
   document.getElementById("contenido").style.display = "block";
-
-  // 🎶 Abre la canción en otra pestaña
-  window.open("https://soundcloud.com/lola-centelles/cosas-que-no-te-dije-saiko", "_blank");
 }
 
+/* 🎶 activar música */
+function activarMusica() {
+  let musica = document.getElementById("musica");
+
+  musica.src =
+  "https://www.youtube.com/embed/" + videoID + "?autoplay=1&controls=0&loop=1&playlist=" + videoID;
+
+  musica.style.display = "block";
+}
+
+/* juego */
 let corazon = document.getElementById("corazon");
 let puntos = 0;
 
@@ -130,6 +162,7 @@ corazon.onclick = function() {
 
 window.onload = mover;
 
+/* desbloquear */
 function desbloquear() {
   document.getElementById("mensajeBloqueado").innerText = "💖 Lo lograste... esto es para ti";
   document.getElementById("lista").style.display = "block";
