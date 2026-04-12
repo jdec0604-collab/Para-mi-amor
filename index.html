@@ -105,10 +105,20 @@ function empezar() {
   document.getElementById("inicioPantalla").style.display = "none";
   document.getElementById("contenido").style.display = "block";
 
-  // 🎶 Abre la canción en otra pestaña
-  window.open("https://soundcloud.com/lola-centelles/cosas-que-no-te-dije-saiko", "_blank");
+  // 💖 abrir música en otra pestaña (tu idea original)
+  let musica = window.open(
+    "https://soundcloud.com/lola-centelles/cosas-que-no-te-dije-saiko",
+    "_blank",
+    "noopener,noreferrer,width=400,height=700,left=200,top=100"
+  );
+
+  // ⚠️ si el navegador bloquea la pestaña
+  if (!musica) {
+    alert("Activa las ventanas emergentes para escuchar la música 💖");
+  }
 }
 
+/* 🎮 juego */
 let corazon = document.getElementById("corazon");
 let puntos = 0;
 
