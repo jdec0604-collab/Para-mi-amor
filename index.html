@@ -12,14 +12,45 @@ body {
   padding: 20px;
 }
 
+/* pantalla música */
+#pantallaMusica {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.botonMusica {
+  padding: 20px 30px;
+  font-size: 20px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #ff4d6d;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,0,100,0.4);
+  transition: 0.3s;
+}
+
+.botonMusica:hover {
+  transform: scale(1.1);
+}
+
+/* pantalla inicio */
 #inicioPantalla {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: #ffb6c1;
-  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -34,6 +65,7 @@ body {
   cursor: pointer;
 }
 
+/* contenido */
 #contenido {
   display: none;
 }
@@ -54,34 +86,28 @@ body {
 #lista {
   display: none;
 }
-
-.botonYT {
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  background: #ff69b4;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  margin: 15px;
-}
 </style>
 </head>
 
 <body>
 
+<!-- 🎶 pantalla música -->
+<div id="pantallaMusica">
+  <h1>💖 Antes de todo… 💖</h1>
+  <p>Pon esta canción, es importante para lo que vas a leer 🥹</p>
+  <button class="botonMusica" onclick="ponerMusica()">🎶 Reproducir canción</button>
+</div>
+
+<!-- 💖 pantalla empezar -->
 <div id="inicioPantalla">
   <h1>💖 Tengo algo para ti 💖</h1>
   <button onclick="empezar()">Toca para empezar 💖</button>
 </div>
 
+<!-- 💌 contenido -->
 <div id="contenido">
 
 <h1>Hola… esto es para ti 💖</h1>
-
-<!-- 🎶 BOTÓN QUE SÍ FUNCIONA -->
-<p>💖 Antes de leer esto… porfa pon esta canción, es importante para mí</p>
-<button class="botonYT" onclick="abrirMusica()">🎶 Dale play a esta canción</button>
 
 <div class="seccion">
 <h2>Inicio</h2>
@@ -116,16 +142,18 @@ body {
 
 <script>
 
+function ponerMusica() {
+  window.open("https://soundcloud.com/lola-centelles/cosas-que-no-te-dije-saiko", "_blank");
+  document.getElementById("pantallaMusica").style.display = "none";
+  document.getElementById("inicioPantalla").style.display = "flex";
+}
+
 function empezar() {
   document.getElementById("inicioPantalla").style.display = "none";
   document.getElementById("contenido").style.display = "block";
 }
 
-/* 🎶 ABRIR MÚSICA (SOLUCIÓN FINAL) */
-function abrirMusica() {
-  window.open("https://www.youtube.com/watch?v=8obld3JrBNM", "_blank");
-}
-
+/* juego */
 let corazon = document.getElementById("corazon");
 let puntos = 0;
 
@@ -147,6 +175,7 @@ corazon.onclick = function() {
 
 window.onload = mover;
 
+/* lista completa */
 function desbloquear() {
   document.getElementById("mensajeBloqueado").innerText = "💖 Lo lograste... esto es para ti";
   document.getElementById("lista").style.display = "block";
