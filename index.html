@@ -79,12 +79,9 @@ body {
 
 <h1>Hola… esto es para ti 💖</h1>
 
-<!-- 🎶 BOTÓN DE YOUTUBE -->
+<!-- 🎶 BOTÓN QUE SÍ FUNCIONA -->
 <p>💖 Antes de leer esto… porfa pon esta canción, es importante para mí</p>
-
-<a href="https://www.youtube.com/watch?v=8obld3JrBNM" target="_blank">
-  <button class="botonYT">🎶 Dale play a esta canción</button>
-</a>
+<button class="botonYT" onclick="abrirMusica()">🎶 Dale play a esta canción</button>
 
 <div class="seccion">
 <h2>Inicio</h2>
@@ -122,6 +119,11 @@ body {
 function empezar() {
   document.getElementById("inicioPantalla").style.display = "none";
   document.getElementById("contenido").style.display = "block";
+}
+
+/* 🎶 ABRIR MÚSICA (SOLUCIÓN FINAL) */
+function abrirMusica() {
+  window.open("https://www.youtube.com/watch?v=8obld3JrBNM", "_blank");
 }
 
 let corazon = document.getElementById("corazon");
