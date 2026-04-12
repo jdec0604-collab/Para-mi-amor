@@ -55,14 +55,13 @@ body {
   display: none;
 }
 
-#botonMusica {
-  padding: 10px;
-  margin: 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 10px;
-  background: pink;
-  cursor: pointer;
+#playerContainer {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 </style>
 </head>
@@ -74,20 +73,11 @@ body {
   <button onclick="empezar()">Toca para empezar 💖</button>
 </div>
 
-<!-- 🎵 MÚSICA (oculta) -->
-<iframe id="musica"
-style="display:none"
-width="0"
-height="0"
-allow="autoplay">
-</iframe>
-
 <div id="contenido">
 
 <h1>Hola… esto es para ti 💖</h1>
 
-<!-- 🎶 BOTÓN DE MÚSICA -->
-<button id="botonMusica" onclick="activarMusica()">🎶 Activar música</button>
+<button onclick="activarMusica()">🎶 Activar música</button>
 
 <div class="seccion">
 <h2>Inicio</h2>
@@ -120,27 +110,30 @@ allow="autoplay">
 
 </div>
 
+<!-- 🎵 reproductor -->
+<div id="playerContainer">
+  <iframe id="musica"
+    width="200"
+    height="100"
+    src=""
+    allow="autoplay">
+  </iframe>
+</div>
+
 <script>
 
 let videoID = "8obld3JrBNM";
 
-/* inicio */
 function empezar() {
   document.getElementById("inicioPantalla").style.display = "none";
   document.getElementById("contenido").style.display = "block";
 }
 
-/* 🎶 activar música */
 function activarMusica() {
-  let musica = document.getElementById("musica");
-
-  musica.src =
-  "https://www.youtube.com/embed/" + videoID + "?autoplay=1&controls=0&loop=1&playlist=" + videoID;
-
-  musica.style.display = "block";
+  document.getElementById("musica").src =
+  "https://www.youtube.com/embed/" + videoID + "?autoplay=1&loop=1&playlist=" + videoID;
 }
 
-/* juego */
 let corazon = document.getElementById("corazon");
 let puntos = 0;
 
@@ -162,7 +155,6 @@ corazon.onclick = function() {
 
 window.onload = mover;
 
-/* desbloquear */
 function desbloquear() {
   document.getElementById("mensajeBloqueado").innerText = "💖 Lo lograste... esto es para ti";
   document.getElementById("lista").style.display = "block";
