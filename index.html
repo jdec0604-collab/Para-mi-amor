@@ -64,10 +64,12 @@ body {
   <button onclick="empezar()">Toca para empezar</button>
 </div>
 
-<!-- 🎵 MÚSICA -->
-<audio id="musica" loop>
-  <source src="cancion.mp3" type="audio/mpeg">
-</audio>
+<!-- 🎶 MÚSICA (YA CONFIGURADA) -->
+<iframe id="musica"
+width="0"
+height="0"
+allow="autoplay">
+</iframe>
 
 <div id="contenido">
 
@@ -106,12 +108,19 @@ body {
 
 <script>
 
+/* 🎵 ID DE LA CANCIÓN */
+let videoID = "8obld3JrBNM";
+
+/* empezar todo */
 function empezar() {
   document.getElementById("inicioPantalla").style.display = "none";
   document.getElementById("contenido").style.display = "block";
-  document.getElementById("musica").play();
+
+  document.getElementById("musica").src =
+  "https://www.youtube.com/embed/" + videoID + "?autoplay=1&controls=0&loop=1&playlist=" + videoID;
 }
 
+/* juego */
 let corazon = document.getElementById("corazon");
 let puntos = 0;
 
@@ -135,6 +144,7 @@ document.getElementById("corazon").onclick = function() {
 
 window.onload = mover;
 
+/* desbloquear */
 function desbloquear() {
   document.getElementById("mensajeBloqueado").innerText = "💖 Lo lograste... esto es para ti";
   document.getElementById("lista").style.display = "block";
