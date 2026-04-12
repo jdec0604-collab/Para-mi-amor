@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para ti 💖</title>
+
+<style>
+body {
+  background: #ffe6f0;
+  font-family: Arial;
+  text-align: center;
+  padding: 20px;
+}
+
+#inicioPantalla {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffb6c1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#inicioPantalla button {
+  padding: 15px;
+  font-size: 18px;
+  background: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+#contenido {
+  display: none;
+}
+
+.seccion {
+  margin: 40px;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+}
+
+#corazon {
+  font-size: 30px;
+  position: absolute;
+  cursor: pointer;
+}
+
+#lista {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div id="inicioPantalla">
+  <h1>💖 Tengo algo para ti 💖</h1>
+  <button onclick="empezar()">Toca para empezar</button>
+</div>
+
+<iframe id="musica" width="0" height="0" allow="autoplay"></iframe>
+
+<div id="contenido">
+
+<h1>Hola… esto es para ti 💖</h1>
+
+<div class="seccion">
+<h2>Inicio</h2>
+<p>No sé muy bien cómo empezar esto… pero solo quería hacer algo especial para ti.</p>
+</div>
+
+<div class="seccion">
+<h2>Parte 1: Cómo te conocí</h2>
+<p>Desde el día en que empezamos a hablar, algo en ti me llamó la atención… poco a poco te volviste alguien muy importante para mí.</p>
+</div>
+
+<div class="seccion">
+<h2>Parte 2: Lo que siento</h2>
+<p>No sé en qué momento empezó todo esto… pero ahora sé que me importas más de lo que imaginaba.</p>
+</div>
+
+<div class="seccion">
+<h2>🎮 Mini juego: atrapa el corazón</h2>
+<p>Consigue 10 puntos para desbloquear algo especial 💖</p>
+
+<div id="corazon">💖</div>
+<p id="puntos">Puntos: 0</p>
+</div>
+
+<div class="seccion">
+<h2>💌 100 cosas que amo de ti</h2>
+<p id="mensajeBloqueado">🔒 Completa el juego para desbloquear esto</p>
+<p id="lista"></p>
+</div>
+
+</div>
+
+<script>
+
+let videoID = "AQUI_TU_ID";
+
+function empezar() {
+  document.getElementById("inicioPantalla").style.display = "none";
+  document.getElementById("contenido").style.display = "block";
+
+  document.getElementById("musica").src =
+  "https://www.youtube.com/embed/" + videoID + "?autoplay=1&loop=1&playlist=" + videoID;
+}
+
+let corazon = document.getElementById("corazon");
+let puntos = 0;
+
+function mover() {
+  let ancho = window.innerWidth - 50;
+  let alto = window.innerHeight - 50;
+
+  corazon.style.left = Math.random() * ancho + "px";
+  corazon.style.top = Math.random() * alto + "px";
+}
+
+document.getElementById("corazon").onclick = function() {
+  puntos++;
+  document.getElementById("puntos").innerText = "Puntos: " + puntos;
+  mover();
+
+  if (puntos >= 10) {
+    desbloquear();
+  }
+};
+
+window.onload = mover;
+
+function desbloquear() {
+  document.getElementById("mensajeBloqueado").innerText = "💖 Lo lograste... esto es para ti";
+  document.getElementById("lista").style.display = "block";
+
+  document.getElementById("lista").innerHTML =
+"1. Tu forma de ser <br>\
+2. Tu sonrisa <br>\
+3. Tu forma de hablar <br>\
+4. Cómo me haces sentir <br>\
+5. Tu manera de pensar <br>\
+6. Tu risa <br>\
+7. Cómo me miras <br>\
+8. Tu forma de expresarte <br>\
+9. Tu personalidad <br>\
+10. Tu esencia <br>\
+11. Cómo haces mis días mejores <br>\
+12. Tu forma de escuchar <br>\
+13. Tu forma de responder <br>\
+14. Tu forma de existir <br>\
+15. Cómo me haces reír <br>\
+16. Tu paciencia <br>\
+17. Tu ternura <br>\
+18. Tu dulzura <br>\
+19. Tu forma de ser única <br>\
+20. Tu sinceridad <br>\
+21. Tu forma de entender <br>\
+22. Tu inteligencia <br>\
+23. Tu forma de preocuparte <br>\
+24. Tu cariño <br>\
+25. Tu forma de ver la vida <br>\
+26. Tu estilo <br>\
+27. Tu voz <br>\
+28. Tu forma de hablar conmigo <br>\
+29. Tu presencia <br>\
+30. Tu energía <br>\
+31. Tu vibra <br>\
+32. Tu autenticidad <br>\
+33. Tu forma de hacerme sentir especial <br>\
+34. Tu compañía <br>\
+35. Tu forma de estar ahí <br>\
+36. Tu naturalidad <br>\
+37. Tu forma de reírte <br>\
+38. Tu forma de hacerme feliz <br>\
+39. Tu forma de pensar en mí <br>\
+40. Tu forma de ser tan especial <br>\
+41. Tu forma de ser diferente <br>\
+42. Tu forma de brillar <br>\
+43. Tu forma de amar <br>\
+44. Tu forma de demostrar cariño <br>\
+45. Tu forma de entenderme <br>\
+46. Tu forma de escucharme <br>\
+47. Tu forma de cuidarme <br>\
+48. Tu forma de existir en mi vida <br>\
+49. Tu forma de hacerme sentir en paz <br>\
+50. Tu forma de darme tranquilidad <br>\
+51. Tu forma de hacerme sonreír <br>\
+52. Tu forma de mirarme <br>\
+53. Tu forma de decir las cosas <br>\
+54. Tu forma de sorprenderme <br>\
+55. Tu forma de alegrarme <br>\
+56. Tu forma de hacer todo mejor <br>\
+57. Tu forma de hacerme sentir querido <br>\
+58. Tu forma de estar presente <br>\
+59. Tu forma de ser tan linda <br>\
+60. Tu forma de ser tan tú <br>\
+61. Tu forma de hacerme pensar en ti <br>\
+62. Tu forma de cambiar mis días <br>\
+63. Tu forma de hacerme feliz sin intentarlo <br>\
+64. Tu forma de ser tan importante <br>\
+65. Tu forma de hacerme sentir bien <br>\
+66. Tu forma de ser única para mí <br>\
+67. Tu forma de hacerme sentir diferente <br>\
+68. Tu forma de ser increíble <br>\
+69. Tu forma de ser tan especial en mi vida <br>\
+70. Tu forma de llenar mis pensamientos <br>\
+71. Tu forma de hacerme sonreír sin razón <br>\
+72. Tu forma de ser tan significativa <br>\
+73. Tu forma de hacerme sentir tanto <br>\
+74. Tu forma de ser tan maravillosa <br>\
+75. Tu forma de ser tan linda conmigo <br>\
+76. Tu forma de hacerme sentir tranquilo <br>\
+77. Tu forma de ser tan importante para mí <br>\
+78. Tu forma de hacerme feliz cada día <br>\
+79. Tu forma de ser tan especial en todo <br>\
+80. Tu forma de hacerme sentir único <br>\
+81. Tu forma de ser tan bonita por dentro <br>\
+82. Tu forma de hacerme sentir en casa <br>\
+83. Tu forma de ser tan increíble conmigo <br>\
+84. Tu forma de hacerme sentir amado <br>\
+85. Tu forma de ser tan hermosa en todo sentido <br>\
+86. Tu forma de hacerme sentir bien siempre <br>\
+87. Tu forma de ser tan importante en mi vida <br>\
+88. Tu forma de hacerme sentir feliz <br>\
+89. Tu forma de ser todo lo que me gusta <br>\
+90. Tu forma de hacerme sentir tanto por ti <br>\
+91. Tu forma de ser simplemente tú <br>\
+92. Tus pequeños detalles <br>\
+93. Tu forma de sorprenderme sin intentarlo <br>\
+94. Tu forma de alegrar mis días malos <br>\
+95. Tu forma de hacerme pensar en un futuro bonito <br>\
+96. Tu forma de hacer todo más especial <br>\
+97. Tu forma de ser mi persona favorita <br>\
+98. Tu forma de hacerme sentir afortunado <br>\
+99. Tu forma de iluminar mis días <br>\
+100. Todo de ti 💖";
+}
+
+</script>
+
+</body>
+</html>
