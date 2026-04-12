@@ -64,7 +64,7 @@ body {
   <button onclick="empezar()">Toca para empezar</button>
 </div>
 
-<!-- 🎶 MÚSICA (YA CONFIGURADA) -->
+<!-- 🎵 MÚSICA -->
 <iframe id="musica"
 width="0"
 height="0"
@@ -81,18 +81,18 @@ allow="autoplay">
 </div>
 
 <div class="seccion">
-<h2>Parte 1: Cómo te conocí</h2>
-<p>Desde el día en que empezamos a hablar, algo en ti me llamó la atención… poco a poco te volviste alguien muy importante para mí.</p>
+<h2>Parte 1</h2>
+<p>Desde el día en que empezamos a hablar, algo en ti me llamó la atención…</p>
 </div>
 
 <div class="seccion">
-<h2>Parte 2: Lo que siento</h2>
-<p>No sé en qué momento empezó todo esto… pero ahora sé que me importas más de lo que imaginaba.</p>
+<h2>Parte 2</h2>
+<p>No sé en qué momento empezó todo esto… pero ahora sé que me importas mucho.</p>
 </div>
 
 <div class="seccion">
-<h2>🎮 Mini juego: atrapa el corazón</h2>
-<p>Consigue 10 puntos para desbloquear algo especial 💖</p>
+<h2>🎮 Mini juego</h2>
+<p>Consigue 10 puntos 💖</p>
 
 <div id="corazon">💖</div>
 <p id="puntos">Puntos: 0</p>
@@ -100,7 +100,7 @@ allow="autoplay">
 
 <div class="seccion">
 <h2>💌 100 cosas que amo de ti</h2>
-<p id="mensajeBloqueado">🔒 Completa el juego para desbloquear esto</p>
+<p id="mensajeBloqueado">🔒 Completa el juego</p>
 <p id="lista"></p>
 </div>
 
@@ -108,19 +108,14 @@ allow="autoplay">
 
 <script>
 
-/* 🎵 ID DE LA CANCIÓN */
-let videoID = "8obld3JrBNM";
-
-/* empezar todo */
 function empezar() {
   document.getElementById("inicioPantalla").style.display = "none";
   document.getElementById("contenido").style.display = "block";
 
   document.getElementById("musica").src =
-  "https://www.youtube.com/embed/" + videoID + "?autoplay=1&controls=0&loop=1&playlist=" + videoID;
+  "https://w.soundcloud.com/player/?url=https://soundcloud.com/lola-centelles/cosas-que-no-te-dije-saiko&auto_play=true&hide_related=true&show_comments=false";
 }
 
-/* juego */
 let corazon = document.getElementById("corazon");
 let puntos = 0;
 
@@ -132,19 +127,16 @@ function mover() {
   corazon.style.top = Math.random() * alto + "px";
 }
 
-document.getElementById("corazon").onclick = function() {
+corazon.onclick = function() {
   puntos++;
   document.getElementById("puntos").innerText = "Puntos: " + puntos;
   mover();
 
-  if (puntos >= 10) {
-    desbloquear();
-  }
+  if (puntos >= 10) desbloquear();
 };
 
 window.onload = mover;
 
-/* desbloquear */
 function desbloquear() {
   document.getElementById("mensajeBloqueado").innerText = "💖 Lo lograste... esto es para ti";
   document.getElementById("lista").style.display = "block";
