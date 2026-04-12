@@ -61,15 +61,8 @@ body {
 
 <div id="inicioPantalla">
   <h1>💖 Tengo algo para ti 💖</h1>
-  <button onclick="empezar()">Toca para empezar</button>
+  <button onclick="empezar()">Toca aquí (pon sonido) 🎶💖</button>
 </div>
-
-<!-- 🎵 MÚSICA -->
-<iframe id="musica"
-width="0"
-height="0"
-allow="autoplay">
-</iframe>
 
 <div id="contenido">
 
@@ -112,8 +105,8 @@ function empezar() {
   document.getElementById("inicioPantalla").style.display = "none";
   document.getElementById("contenido").style.display = "block";
 
-  document.getElementById("musica").src =
-  "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/lola-centelles/cosas-que-no-te-dije-saiko&auto_play=true&hide_related=true&show_comments=false";
+  // 🎶 Abre la canción en otra pestaña
+  window.open("https://soundcloud.com/lola-centelles/cosas-que-no-te-dije-saiko", "_blank");
 }
 
 let corazon = document.getElementById("corazon");
